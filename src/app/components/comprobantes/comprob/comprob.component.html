@@ -1,0 +1,126 @@
+<div id="todo">
+    <div id="aaa">
+    <div class="container">
+        <h1>{{title}}</h1>
+    <a href="javascript:void(0)" (click)="dos()" data-bs-toggle="modal" data-bs-target="#exampleModal"  style="float:right" >
+      <img class="mas" src="./assets/mas.png" alt="none">
+    </a>
+      <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">fecha/hora</th>
+          <th scope="col">Remitente</th>
+          <th scope="col">Destinatario</th>
+          <th scope="col">TC</th>
+          <th scope="col">Monto (Bs)</th>
+          <th scope="col">Monto ($us)</th>
+          <th scope="col">Mod</th>
+          <th scope="col">Del</th>          
+        </tr>
+      </thead>
+      
+    <tbody>
+        <tr>
+          <td>fecha y hora</td>
+          <td>raul</td>
+          <td>pedro</td>
+          <td> tc</td>
+          <td>monto bs
+          </td>
+          <td> monto dol
+          </td>
+          <td>
+            <a href="javascript:void(0)" (click)="uno()">
+              <img src="./assets/mod.png" width="25" height="25" alt="none">
+            </a>
+          </td>
+          <td>    
+            <a href="javascript:void(0)" (click)="uno()">
+              <img src="./assets/del.png" width="25" height="25" alt="none">
+            </a>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+      
+      </div>
+    </div>
+    </div>
+
+  <!--VENTANA MODAL PARA ADICIONAR DATOS  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Comprobantes</h5>
+          <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >  
+        <div class="modal-body">            
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">Fecha:</label>
+                            <input type="date" formControlName="tc" class="form-control"
+                                   ngClass="{ 'is-invalid': submitted && f.date.errors }" >
+                                   <!--
+                            <div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
+                              <p *ngIf="f.fecha.errors.required">requiere de CODPRO</p>
+                              <p *ngIf="f.fecha.errors.minlength">Mínimo 5 char</p>
+                              <p *ngIf="f.fecha.errors.maxlength">Máximo 6 char</p>
+                            </div>
+                          -->
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 ms-auto">
+                        <div class="form-group">
+                            <label class="form-label">Tipo Cambio:</label>
+                            <input type="text" class="form-control" style="width: 80px;;" id="exam" placeholder="tipo">
+                                     <!--
+                            <div *ngIf="submitted && f.tc.errors" class="invalid-feedback">
+                              <p *ngIf="f.tc.errors.required">requiere de CODPRO</p>
+                              <p *ngIf="f.tc.errors.minlength">Mínimo 5 char</p>
+                              <p *ngIf="f.tc.errors.maxlength">Máximo 6 char</p>
+                            </div>
+                          -->
+                        </div>
+                    </div>
+                </div>
+            <div style="width: 370px;margin-top: 10px;">
+                <div class="form-group">
+                    <label class="form-label">Remitente:</label>
+                    <select style="width: 250px; display: inline-block;float:right" class="form-select" aria-label="Default select example">
+                        <option selected>...</option>
+                    </select>
+                </div>
+            </div>  
+            <div style="width: 370px; margin-top: 15px;;">
+                <div class="form-group">
+                    <label class="form-label">Destinatario:</label>
+                    <select style="width: 250px;display: inline-block;float:right" class="form-select" aria-label="Default select example">
+                        <option selected>...</option>
+                    </select>
+                </div>
+            </div>          
+            <div style="width: 370px;margin-top: 15px;">
+                <div class="form-group">
+                    <label class="form-label">Monto moneda nacional:</label>
+                    <input type="text" class="form-control" style="width: 80px;display: inline-block;float:right" id="exam" placeholder="Bs.">
+                </div>
+            </div>  
+            <div style="width: 370px; margin-top: 15px;;">
+                <div class="form-group">
+                    <label class="form-label">Monto moneda extranjera:</label>
+                    <input type="text" class="form-control" style="width: 80px;display: inline-block;float:right" id="exam" placeholder="$us">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" >Grabar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>          
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
